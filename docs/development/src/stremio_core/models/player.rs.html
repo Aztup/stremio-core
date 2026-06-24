@@ -1558,12 +1558,150 @@
 <a href="#1557" id="1557">1557</a>
 <a href="#1558" id="1558">1558</a>
 <a href="#1559" id="1559">1559</a>
-<a href="#1560" id="1560">1560</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::marker::PhantomData;
+<a href="#1560" id="1560">1560</a>
+<a href="#1561" id="1561">1561</a>
+<a href="#1562" id="1562">1562</a>
+<a href="#1563" id="1563">1563</a>
+<a href="#1564" id="1564">1564</a>
+<a href="#1565" id="1565">1565</a>
+<a href="#1566" id="1566">1566</a>
+<a href="#1567" id="1567">1567</a>
+<a href="#1568" id="1568">1568</a>
+<a href="#1569" id="1569">1569</a>
+<a href="#1570" id="1570">1570</a>
+<a href="#1571" id="1571">1571</a>
+<a href="#1572" id="1572">1572</a>
+<a href="#1573" id="1573">1573</a>
+<a href="#1574" id="1574">1574</a>
+<a href="#1575" id="1575">1575</a>
+<a href="#1576" id="1576">1576</a>
+<a href="#1577" id="1577">1577</a>
+<a href="#1578" id="1578">1578</a>
+<a href="#1579" id="1579">1579</a>
+<a href="#1580" id="1580">1580</a>
+<a href="#1581" id="1581">1581</a>
+<a href="#1582" id="1582">1582</a>
+<a href="#1583" id="1583">1583</a>
+<a href="#1584" id="1584">1584</a>
+<a href="#1585" id="1585">1585</a>
+<a href="#1586" id="1586">1586</a>
+<a href="#1587" id="1587">1587</a>
+<a href="#1588" id="1588">1588</a>
+<a href="#1589" id="1589">1589</a>
+<a href="#1590" id="1590">1590</a>
+<a href="#1591" id="1591">1591</a>
+<a href="#1592" id="1592">1592</a>
+<a href="#1593" id="1593">1593</a>
+<a href="#1594" id="1594">1594</a>
+<a href="#1595" id="1595">1595</a>
+<a href="#1596" id="1596">1596</a>
+<a href="#1597" id="1597">1597</a>
+<a href="#1598" id="1598">1598</a>
+<a href="#1599" id="1599">1599</a>
+<a href="#1600" id="1600">1600</a>
+<a href="#1601" id="1601">1601</a>
+<a href="#1602" id="1602">1602</a>
+<a href="#1603" id="1603">1603</a>
+<a href="#1604" id="1604">1604</a>
+<a href="#1605" id="1605">1605</a>
+<a href="#1606" id="1606">1606</a>
+<a href="#1607" id="1607">1607</a>
+<a href="#1608" id="1608">1608</a>
+<a href="#1609" id="1609">1609</a>
+<a href="#1610" id="1610">1610</a>
+<a href="#1611" id="1611">1611</a>
+<a href="#1612" id="1612">1612</a>
+<a href="#1613" id="1613">1613</a>
+<a href="#1614" id="1614">1614</a>
+<a href="#1615" id="1615">1615</a>
+<a href="#1616" id="1616">1616</a>
+<a href="#1617" id="1617">1617</a>
+<a href="#1618" id="1618">1618</a>
+<a href="#1619" id="1619">1619</a>
+<a href="#1620" id="1620">1620</a>
+<a href="#1621" id="1621">1621</a>
+<a href="#1622" id="1622">1622</a>
+<a href="#1623" id="1623">1623</a>
+<a href="#1624" id="1624">1624</a>
+<a href="#1625" id="1625">1625</a>
+<a href="#1626" id="1626">1626</a>
+<a href="#1627" id="1627">1627</a>
+<a href="#1628" id="1628">1628</a>
+<a href="#1629" id="1629">1629</a>
+<a href="#1630" id="1630">1630</a>
+<a href="#1631" id="1631">1631</a>
+<a href="#1632" id="1632">1632</a>
+<a href="#1633" id="1633">1633</a>
+<a href="#1634" id="1634">1634</a>
+<a href="#1635" id="1635">1635</a>
+<a href="#1636" id="1636">1636</a>
+<a href="#1637" id="1637">1637</a>
+<a href="#1638" id="1638">1638</a>
+<a href="#1639" id="1639">1639</a>
+<a href="#1640" id="1640">1640</a>
+<a href="#1641" id="1641">1641</a>
+<a href="#1642" id="1642">1642</a>
+<a href="#1643" id="1643">1643</a>
+<a href="#1644" id="1644">1644</a>
+<a href="#1645" id="1645">1645</a>
+<a href="#1646" id="1646">1646</a>
+<a href="#1647" id="1647">1647</a>
+<a href="#1648" id="1648">1648</a>
+<a href="#1649" id="1649">1649</a>
+<a href="#1650" id="1650">1650</a>
+<a href="#1651" id="1651">1651</a>
+<a href="#1652" id="1652">1652</a>
+<a href="#1653" id="1653">1653</a>
+<a href="#1654" id="1654">1654</a>
+<a href="#1655" id="1655">1655</a>
+<a href="#1656" id="1656">1656</a>
+<a href="#1657" id="1657">1657</a>
+<a href="#1658" id="1658">1658</a>
+<a href="#1659" id="1659">1659</a>
+<a href="#1660" id="1660">1660</a>
+<a href="#1661" id="1661">1661</a>
+<a href="#1662" id="1662">1662</a>
+<a href="#1663" id="1663">1663</a>
+<a href="#1664" id="1664">1664</a>
+<a href="#1665" id="1665">1665</a>
+<a href="#1666" id="1666">1666</a>
+<a href="#1667" id="1667">1667</a>
+<a href="#1668" id="1668">1668</a>
+<a href="#1669" id="1669">1669</a>
+<a href="#1670" id="1670">1670</a>
+<a href="#1671" id="1671">1671</a>
+<a href="#1672" id="1672">1672</a>
+<a href="#1673" id="1673">1673</a>
+<a href="#1674" id="1674">1674</a>
+<a href="#1675" id="1675">1675</a>
+<a href="#1676" id="1676">1676</a>
+<a href="#1677" id="1677">1677</a>
+<a href="#1678" id="1678">1678</a>
+<a href="#1679" id="1679">1679</a>
+<a href="#1680" id="1680">1680</a>
+<a href="#1681" id="1681">1681</a>
+<a href="#1682" id="1682">1682</a>
+<a href="#1683" id="1683">1683</a>
+<a href="#1684" id="1684">1684</a>
+<a href="#1685" id="1685">1685</a>
+<a href="#1686" id="1686">1686</a>
+<a href="#1687" id="1687">1687</a>
+<a href="#1688" id="1688">1688</a>
+<a href="#1689" id="1689">1689</a>
+<a href="#1690" id="1690">1690</a>
+<a href="#1691" id="1691">1691</a>
+<a href="#1692" id="1692">1692</a>
+<a href="#1693" id="1693">1693</a>
+<a href="#1694" id="1694">1694</a>
+<a href="#1695" id="1695">1695</a>
+<a href="#1696" id="1696">1696</a>
+<a href="#1697" id="1697">1697</a></pre></div><pre class="rust"><code><span class="kw">use </span>std::marker::PhantomData;
 <span class="kw">use </span>std::ops::Div;
 
 <span class="kw">use </span>base64::Engine;
 <span class="kw">use </span>futures::{future, FutureExt, TryFutureExt};
 <span class="kw">use </span>num::rational::Ratio;
+<span class="kw">use </span>url::Url;
 
 <span class="kw">use </span><span class="kw">crate</span>::constants::{
     BASE64, CREDITS_THRESHOLD_COEF, META_RESOURCE_NAME, PLAYER_IGNORE_SEEK_AFTER,
@@ -1577,7 +1715,7 @@
 };
 <span class="kw">use </span><span class="kw">crate</span>::models::ctx::{Ctx, CtxError};
 <span class="kw">use </span><span class="kw">crate</span>::runtime::msg::{Action, ActionLoad, ActionPlayer, Event, Internal, Msg};
-<span class="kw">use </span><span class="kw">crate</span>::runtime::{Effect, EffectFuture, Effects, Env, EnvFutureExt, UpdateWithCtx};
+<span class="kw">use </span><span class="kw">crate</span>::runtime::{Effect, EffectFuture, Effects, Env, EnvError, EnvFutureExt, UpdateWithCtx};
 <span class="kw">use </span><span class="kw">crate</span>::types::addon::{AggrRequest, Descriptor, ExtraExt, ResourcePath, ResourceRequest};
 <span class="kw">use </span><span class="kw">crate</span>::types::api::{
     fetch_api, APIRequest, APIResult, SeekLog, SeekLogRequest, SkipGapsRequest, SkipGapsResponse,
@@ -1585,15 +1723,19 @@
 };
 <span class="kw">use </span><span class="kw">crate</span>::types::library::{LibraryBucket, LibraryItem};
 <span class="kw">use </span><span class="kw">crate</span>::types::player::{IntroData, IntroOutro};
-<span class="kw">use </span><span class="kw">crate</span>::types::profile::{Profile, Settings <span class="kw">as </span>ProfileSettings};
-<span class="kw">use </span><span class="kw">crate</span>::types::resource::{MetaItem, SeriesInfo, Stream, StreamSource, Subtitles, Video};
-<span class="kw">use </span><span class="kw">crate</span>::types::streams::{StreamItemState, StreamsBucket, StreamsItemKey};
+<span class="kw">use </span><span class="kw">crate</span>::types::profile::{AuthKey, Profile};
+<span class="kw">use </span><span class="kw">crate</span>::types::rating::{Rating, RatingSendRequest, RatingSendResponse};
+<span class="kw">use </span><span class="kw">crate</span>::types::resource::{
+    MetaItem, SeriesInfo, Stream, StreamSource, StreamUrls, Subtitles, Video,
+};
+<span class="kw">use </span><span class="kw">crate</span>::types::streams::{
+    ConvertedStreamSource, StreamItemState, StreamsBucket, StreamsItemKey,
+};
 
 <span class="kw">use </span>stremio_watched_bitfield::WatchedBitField;
 
 <span class="kw">use </span>chrono::{DateTime, Duration, TimeZone, Utc};
 <span class="kw">use </span>derivative::Derivative;
-<span class="kw">use </span>itertools::Itertools;
 <span class="kw">use </span>serde::{Deserialize, Serialize};
 
 <span class="kw">use </span>once_cell::sync::Lazy;
@@ -1656,6 +1798,7 @@
     <span class="kw">pub </span>next_video: <span class="prelude-ty">Option</span>&lt;Video&gt;,
     <span class="kw">pub </span>next_streams: <span class="prelude-ty">Option</span>&lt;ResourceLoadable&lt;Vec&lt;Stream&gt;&gt;&gt;,
     <span class="kw">pub </span>next_stream: <span class="prelude-ty">Option</span>&lt;Stream&gt;,
+    <span class="kw">pub </span>stream: <span class="prelude-ty">Option</span>&lt;Loadable&lt;(StreamUrls, Stream&lt;ConvertedStreamSource&gt;), EnvError&gt;&gt;,
     <span class="kw">pub </span>series_info: <span class="prelude-ty">Option</span>&lt;SeriesInfo&gt;,
     <span class="kw">pub </span>library_item: <span class="prelude-ty">Option</span>&lt;LibraryItem&gt;,
     <span class="kw">pub </span>stream_state: <span class="prelude-ty">Option</span>&lt;StreamItemState&gt;,
@@ -1674,6 +1817,9 @@
     </span><span class="kw">pub </span>loaded: bool,
     <span class="attr">#[serde(skip_serializing)]
     </span><span class="kw">pub </span>ended: bool,
+    <span class="doccomment">/// Whether the selected video has been manually marked as watched
+    </span><span class="attr">#[serde(skip_serializing)]
+    </span><span class="kw">pub </span>marked_video_as_watched: bool,
     <span class="attr">#[serde(skip_serializing)]
     </span><span class="kw">pub </span>paused: <span class="prelude-ty">Option</span>&lt;bool&gt;,
     <span class="attr">#[serde(skip_serializing)]
@@ -1691,6 +1837,15 @@
     <span class="kw">fn </span>update(<span class="kw-2">&amp;mut </span><span class="self">self</span>, msg: <span class="kw-2">&amp;</span>Msg, ctx: <span class="kw-2">&amp;</span>Ctx) -&gt; Effects {
         <span class="kw">match </span>msg {
             Msg::Action(Action::Load(ActionLoad::Player(selected))) =&gt; {
+                <span class="comment">// make sure we send the correct Trakt event if the model hasn't been unloaded
+                </span><span class="kw">let </span>trakt_event_effects = <span class="kw">if </span><span class="self">self</span>.selected.is_some() {
+                    Effects::msg(Msg::Event(Event::TraktPaused {
+                        context: <span class="self">self</span>.analytics_context.as_ref().cloned().unwrap_or_default(),
+                    }))
+                    .unchanged()
+                } <span class="kw">else </span>{
+                    Effects::none().unchanged()
+                };
                 <span class="kw">let </span>item_state_update_effects = <span class="kw">if </span><span class="self">self
                     </span>.selected
                     .as_ref()
@@ -1701,7 +1856,11 @@
                         .as_ref()
                         .map(|meta_request| <span class="kw-2">&amp;</span>meta_request.path.id)
                 {
-                    item_state_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.library_item, <span class="self">self</span>.next_video.as_ref())
+                    item_state_update(
+                        <span class="kw-2">&amp;mut </span><span class="self">self</span>.library_item,
+                        <span class="self">self</span>.next_video.as_ref(),
+                        <span class="self">self</span>.marked_video_as_watched,
+                    )
                 } <span class="kw">else </span>{
                     Effects::none().unchanged()
                 };
@@ -1733,10 +1892,18 @@
                 };
                 <span class="kw">let </span>stream_state_effects = eq_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.stream_state, <span class="prelude-val">None</span>);
                 <span class="kw">let </span>video_params_effects = eq_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.video_params, <span class="prelude-val">None</span>);
+
+                <span class="kw">let </span>stream_effects = stream_update(
+                    <span class="kw-2">&amp;mut </span><span class="self">self</span>.stream,
+                    <span class="self">self</span>.selected.as_ref(),
+                    <span class="kw-2">&amp;</span>ctx.profile.settings.streaming_server_url,
+                );
+
                 <span class="kw">let </span>subtitles_effects = subtitles_update::&lt;E&gt;(
                     <span class="kw-2">&amp;mut </span><span class="self">self</span>.subtitles,
                     <span class="kw-2">&amp;</span><span class="self">self</span>.selected,
                     <span class="kw-2">&amp;</span><span class="self">self</span>.video_params,
+                    <span class="self">self</span>.stream.as_ref(),
                     <span class="kw-2">&amp;</span>ctx.profile.addons,
                 );
                 <span class="kw">let </span>next_video_effects = next_video_update(
@@ -1744,19 +1911,14 @@
                     <span class="kw-2">&amp;</span><span class="self">self</span>.next_stream,
                     <span class="kw-2">&amp;</span><span class="self">self</span>.selected,
                     <span class="kw-2">&amp;</span><span class="self">self</span>.meta_item,
-                    <span class="kw-2">&amp;</span>ctx.profile.settings,
                 );
                 <span class="kw">let </span>next_streams_effects = next_streams_update::&lt;E&gt;(
                     <span class="kw-2">&amp;mut </span><span class="self">self</span>.next_streams,
                     <span class="kw-2">&amp;</span><span class="self">self</span>.next_video,
                     <span class="kw-2">&amp;</span><span class="self">self</span>.selected,
                 );
-                <span class="kw">let </span>next_stream_effects = next_stream_update(
-                    <span class="kw-2">&amp;mut </span><span class="self">self</span>.next_stream,
-                    <span class="kw-2">&amp;</span><span class="self">self</span>.next_streams,
-                    <span class="kw-2">&amp;</span><span class="self">self</span>.selected,
-                    <span class="kw-2">&amp;</span>ctx.profile.settings,
-                );
+                <span class="kw">let </span>next_stream_effects =
+                    next_stream_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.next_stream, <span class="kw-2">&amp;</span><span class="self">self</span>.next_streams, <span class="kw-2">&amp;</span><span class="self">self</span>.selected);
                 <span class="comment">// Make sure to update the steams and in term the StreamsBucket
                 // once the player loads the newly selected item
                 </span><span class="kw">let </span>update_streams_effects = <span class="kw">match </span>(<span class="kw-2">&amp;</span><span class="self">self</span>.selected, <span class="kw-2">&amp;</span><span class="self">self</span>.meta_item) {
@@ -1779,8 +1941,11 @@
                     <span class="kw-2">&amp;</span>ctx.library,
                 );
 
-                <span class="kw">let </span>library_item_state_effects =
-                    library_item_state_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.library_item, <span class="kw-2">&amp;</span><span class="self">self</span>.selected);
+                <span class="kw">let </span>library_item_state_effects = library_item_state_update(
+                    <span class="kw-2">&amp;mut </span><span class="self">self</span>.library_item,
+                    <span class="self">self</span>.next_video.as_ref(),
+                    <span class="kw-2">&amp;</span><span class="self">self</span>.selected,
+                );
 
                 <span class="kw">let </span>watched_effects =
                     watched_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.watched, <span class="kw-2">&amp;</span><span class="self">self</span>.meta_item, <span class="kw-2">&amp;</span><span class="self">self</span>.library_item);
@@ -1832,11 +1997,14 @@
                 <span class="self">self</span>.loaded = <span class="bool-val">false</span>;
                 <span class="self">self</span>.ended = <span class="bool-val">false</span>;
                 <span class="self">self</span>.paused = <span class="prelude-val">None</span>;
-                item_state_update_effects
+                <span class="self">self</span>.marked_video_as_watched = <span class="bool-val">false</span>;
+                trakt_event_effects
+                    .join(item_state_update_effects)
                     .join(selected_effects)
                     .join(meta_item_effects)
                     .join(stream_state_effects)
                     .join(video_params_effects)
+                    .join(stream_effects)
                     .join(subtitles_effects)
                     .join(next_video_effects)
                     .join(next_streams_effects)
@@ -1851,6 +2019,15 @@
                     .join(notification_effects)
             }
             Msg::Action(Action::Unload) =&gt; {
+                <span class="kw">let </span>trakt_event_effects = <span class="kw">if </span><span class="self">self</span>.selected.is_some() {
+                    Effects::msg(Msg::Event(Event::TraktPaused {
+                        context: <span class="self">self</span>.analytics_context.as_ref().cloned().unwrap_or_default(),
+                    }))
+                    .unchanged()
+                } <span class="kw">else </span>{
+                    Effects::none().unchanged()
+                };
+
                 <span class="kw">let </span>ended_effects = <span class="kw">if </span>!<span class="self">self</span>.ended &amp;&amp; <span class="self">self</span>.selected.is_some() {
                     Effects::msg(Msg::Event(Event::PlayerStopped {
                         context: <span class="self">self</span>.analytics_context.as_ref().cloned().unwrap_or_default(),
@@ -1870,8 +2047,11 @@
                     </span><span class="prelude-val">None</span>,
                 );
 
-                <span class="kw">let </span>item_state_update_effects =
-                    item_state_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.library_item, <span class="self">self</span>.next_video.as_ref());
+                <span class="kw">let </span>item_state_update_effects = item_state_update(
+                    <span class="kw-2">&amp;mut </span><span class="self">self</span>.library_item,
+                    <span class="self">self</span>.next_video.as_ref(),
+                    <span class="self">self</span>.marked_video_as_watched,
+                );
                 <span class="kw">let </span>push_to_library_effects = <span class="kw">match </span><span class="kw-2">&amp;</span><span class="self">self</span>.library_item {
                     <span class="prelude-val">Some</span>(library_item) =&gt; Effects::msg(Msg::Internal(Internal::UpdateLibraryItem(
                         library_item.to_owned(),
@@ -1883,6 +2063,7 @@
                 <span class="kw">let </span>video_params_effects = eq_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.video_params, <span class="prelude-val">None</span>);
                 <span class="kw">let </span>meta_item_effects = eq_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.meta_item, <span class="prelude-val">None</span>);
                 <span class="kw">let </span>stream_state_effects = eq_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.stream_state, <span class="prelude-val">None</span>);
+                <span class="kw">let </span>stream_effects = eq_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.stream, <span class="prelude-val">None</span>);
                 <span class="kw">let </span>subtitles_effects = eq_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.subtitles, <span class="macro">vec!</span>[]);
                 <span class="kw">let </span>next_video_effects = eq_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.next_video, <span class="prelude-val">None</span>);
                 <span class="kw">let </span>next_streams_effects = eq_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.next_streams, <span class="prelude-val">None</span>);
@@ -1896,12 +2077,15 @@
                 <span class="self">self</span>.loaded = <span class="bool-val">false</span>;
                 <span class="self">self</span>.ended = <span class="bool-val">false</span>;
                 <span class="self">self</span>.paused = <span class="prelude-val">None</span>;
+                <span class="self">self</span>.marked_video_as_watched = <span class="bool-val">false</span>;
 
-                seek_history_effects
+                trakt_event_effects
+                    .join(seek_history_effects)
                     .join(item_state_update_effects)
                     .join(push_to_library_effects)
                     .join(selected_effects)
                     .join(video_params_effects)
+                    .join(stream_effects)
                     .join(meta_item_effects)
                     .join(stream_state_effects)
                     .join(subtitles_effects)
@@ -1917,10 +2101,12 @@
             Msg::Action(Action::Player(ActionPlayer::VideoParamsChanged { video_params })) =&gt; {
                 <span class="kw">let </span>video_params_effects =
                     eq_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.video_params, video_params.to_owned());
+
                 <span class="kw">let </span>subtitles_effects = subtitles_update::&lt;E&gt;(
                     <span class="kw-2">&amp;mut </span><span class="self">self</span>.subtitles,
                     <span class="kw-2">&amp;</span><span class="self">self</span>.selected,
                     <span class="kw-2">&amp;</span><span class="self">self</span>.video_params,
+                    <span class="self">self</span>.stream.as_ref(),
                     <span class="kw-2">&amp;</span>ctx.profile.addons,
                 );
                 <span class="kw">let </span>skip_gaps_effects = skip_gaps_update::&lt;E&gt;(
@@ -2012,8 +2198,19 @@
 
                     <span class="kw">let </span>push_to_library_effects =
                         push_to_library::&lt;E&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>.push_library_item_time, library_item);
+                    <span class="kw">let </span>intro_outro_effects = intro_outro_update::&lt;E&gt;(
+                        <span class="kw-2">&amp;mut </span><span class="self">self</span>.intro_outro,
+                        <span class="kw-2">&amp;</span>ctx.profile,
+                        <span class="self">self</span>.selected.as_ref(),
+                        <span class="self">self</span>.video_params.as_ref(),
+                        <span class="self">self</span>.series_info.as_ref(),
+                        <span class="prelude-val">Some</span>(library_item),
+                        <span class="kw-2">&amp;mut </span><span class="self">self</span>.skip_gaps,
+                    );
 
-                    trakt_event_effects.join(push_to_library_effects)
+                    trakt_event_effects
+                        .join(push_to_library_effects)
+                        .join(intro_outro_effects)
                 }
                 <span class="kw">_ </span>=&gt; Effects::none().unchanged(),
             },
@@ -2064,7 +2261,8 @@
                         duration.clone_into(<span class="kw-2">&amp;mut </span>library_item.state.duration);
                     }
 
-                    <span class="kw">if </span>library_item.state.flagged_watched == <span class="number">0
+                    <span class="comment">// Watched threshold for marking an episode/movie as watched
+                    </span><span class="kw">let </span>should_send_watched = <span class="kw">if </span>library_item.state.flagged_watched == <span class="number">0
                         </span>&amp;&amp; library_item.state.time_watched <span class="kw">as </span>f64
                             &gt; library_item.state.duration <span class="kw">as </span>f64 * WATCHED_THRESHOLD_COEF
                     {
@@ -2076,7 +2274,33 @@
                             watched_bit_field.set_video(video_id, <span class="bool-val">true</span>);
                             library_item.state.watched = <span class="prelude-val">Some</span>(watched_bit_field.into());
                         }
-                    }
+
+                        <span class="bool-val">true
+                    </span>} <span class="kw">else </span>{
+                        <span class="bool-val">false
+                    </span>};
+
+                    <span class="comment">// send Watched for MetaDetail id
+                    // single episode should mark the item as watched.
+                    </span><span class="kw">let </span>send_watched_effects = <span class="kw">match </span>(
+                        should_send_watched,
+                        ctx.profile.auth_key(),
+                        <span class="self">self</span>.selected.as_ref(),
+                    ) {
+                        (
+                            <span class="bool-val">true</span>,
+                            <span class="prelude-val">Some</span>(auth_key),
+                            <span class="prelude-val">Some</span>(Selected {
+                                meta_request:
+                                    <span class="prelude-val">Some</span>(ResourceRequest {
+                                        path: meta_path, ..
+                                    }),
+                                ..
+                            }),
+                        ) =&gt; Effects::one(send_watched::&lt;E&gt;(auth_key.to_owned(), meta_path))
+                            .unchanged(),
+                        <span class="kw">_ </span>=&gt; Effects::none().unchanged(),
+                    };
 
                     <span class="kw">if </span>library_item.temp &amp;&amp; library_item.state.times_watched == <span class="number">0 </span>{
                         library_item.removed = <span class="bool-val">true</span>;
@@ -2098,46 +2322,24 @@
                         analytics_context.player_duration = <span class="prelude-val">Some</span>(duration.to_owned());
                     };
 
-                    push_to_library::&lt;E&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>.push_library_item_time, library_item)
+                    <span class="kw">let </span>push_to_library_effects =
+                        push_to_library::&lt;E&gt;(<span class="kw-2">&amp;mut </span><span class="self">self</span>.push_library_item_time, library_item);
+                    <span class="kw">let </span>intro_outro_effects = intro_outro_update::&lt;E&gt;(
+                        <span class="kw-2">&amp;mut </span><span class="self">self</span>.intro_outro,
+                        <span class="kw-2">&amp;</span>ctx.profile,
+                        <span class="self">self</span>.selected.as_ref(),
+                        <span class="self">self</span>.video_params.as_ref(),
+                        <span class="self">self</span>.series_info.as_ref(),
+                        <span class="prelude-val">Some</span>(library_item),
+                        <span class="kw-2">&amp;mut </span><span class="self">self</span>.skip_gaps,
+                    );
+
+                    send_watched_effects
+                        .join(push_to_library_effects)
+                        .join(intro_outro_effects)
                 }
                 <span class="kw">_ </span>=&gt; Effects::none().unchanged(),
             },
-            Msg::Action(Action::Player(ActionPlayer::PausedChanged { paused }))
-                <span class="kw">if </span><span class="self">self</span>.selected.is_some() =&gt;
-            {
-                <span class="self">self</span>.paused = <span class="prelude-val">Some</span>(<span class="kw-2">*</span>paused);
-                <span class="kw">let </span>trakt_event_effects = <span class="kw">if </span>!<span class="self">self</span>.loaded {
-                    <span class="self">self</span>.loaded = <span class="bool-val">true</span>;
-                    Effects::msg(Msg::Event(Event::PlayerPlaying {
-                        load_time: <span class="self">self
-                            </span>.load_time
-                            .map(|load_time| {
-                                E::now().timestamp_millis() - load_time.timestamp_millis()
-                            })
-                            .unwrap_or(-<span class="number">1</span>),
-                        context: <span class="self">self</span>.analytics_context.as_ref().cloned().unwrap_or_default(),
-                    }))
-                    .unchanged()
-                } <span class="kw">else if </span><span class="kw-2">*</span>paused {
-                    Effects::msg(Msg::Event(Event::TraktPaused {
-                        context: <span class="self">self</span>.analytics_context.as_ref().cloned().unwrap_or_default(),
-                    }))
-                    .unchanged()
-                } <span class="kw">else </span>{
-                    Effects::msg(Msg::Event(Event::TraktPlaying {
-                        context: <span class="self">self</span>.analytics_context.as_ref().cloned().unwrap_or_default(),
-                    }))
-                    .unchanged()
-                };
-                <span class="kw">let </span>update_library_item_effects = <span class="kw">match </span><span class="kw-2">&amp;</span><span class="self">self</span>.library_item {
-                    <span class="prelude-val">Some</span>(library_item) =&gt; Effects::msg(Msg::Internal(Internal::UpdateLibraryItem(
-                        library_item.to_owned(),
-                    )))
-                    .unchanged(),
-                    <span class="kw">_ </span>=&gt; Effects::none().unchanged(),
-                };
-                trakt_event_effects.join(update_library_item_effects)
-            }
             Msg::Action(Action::Player(ActionPlayer::PausedChanged { paused }))
                 <span class="kw">if </span><span class="self">self</span>.selected.is_some() =&gt;
             {
@@ -2187,13 +2389,14 @@
                         .map(|library_item| library_item.state.time_offset),
                 );
 
-                <span class="comment">// Set time_offset to 0 as we switch to next video
+                <span class="comment">// Set time_offset to 0 or 1 as we switch to next video
                 </span><span class="kw">let </span>library_item_effects = <span class="self">self
                     </span>.library_item
                     .as_mut()
                     .map(|library_item| {
                         <span class="comment">// instantly update the library item's time_offset.
-                        </span>library_item.state.time_offset = <span class="number">0</span>;
+                        </span>library_item.state.time_offset =
+                            <span class="kw">if </span><span class="self">self</span>.next_video.is_some() { <span class="number">1 </span>} <span class="kw">else </span>{ <span class="number">0 </span>};
 
                         Effects::msg(Msg::Internal(Internal::UpdateLibraryItem(
                             library_item.to_owned(),
@@ -2226,9 +2429,18 @@
             Msg::Action(Action::Player(ActionPlayer::MarkVideoAsWatched(video, is_watched))) =&gt; {
                 <span class="kw">match </span>(<span class="kw-2">&amp;</span><span class="self">self</span>.library_item, <span class="kw-2">&amp;</span><span class="self">self</span>.watched) {
                     (<span class="prelude-val">Some</span>(library_item), <span class="prelude-val">Some</span>(watched)) =&gt; {
+                        <span class="comment">// advancing video_id to the next video is deferred to item_state_update,
+                        // otherwise TimeChanged would reset it back to the playing video
+                        </span><span class="kw">let </span>selected_video_id = <span class="self">self
+                            </span>.selected
+                            .as_ref()
+                            .and_then(|selected| selected.stream_request.as_ref())
+                            .map(|stream_request| <span class="kw-2">&amp;</span>stream_request.path.id);
+                        <span class="kw">if </span>selected_video_id == <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span>video.id) {
+                            <span class="self">self</span>.marked_video_as_watched = <span class="kw-2">*</span>is_watched;
+                        }
                         <span class="kw">let </span><span class="kw-2">mut </span>library_item = library_item.to_owned();
                         library_item.mark_video_as_watched::&lt;E&gt;(watched, video, <span class="kw-2">*</span>is_watched);
-
                         Effects::msg(Msg::Internal(Internal::UpdateLibraryItem(library_item)))
                             .unchanged()
                     }
@@ -2274,8 +2486,11 @@
                     <span class="kw-2">&amp;</span>ctx.library,
                 );
 
-                <span class="kw">let </span>library_item_state_effects =
-                    library_item_state_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.library_item, <span class="kw-2">&amp;</span><span class="self">self</span>.selected);
+                <span class="kw">let </span>library_item_state_effects = library_item_state_update(
+                    <span class="kw-2">&amp;mut </span><span class="self">self</span>.library_item,
+                    <span class="self">self</span>.next_video.as_ref(),
+                    <span class="kw-2">&amp;</span><span class="self">self</span>.selected,
+                );
 
                 <span class="kw">let </span>watched_effects =
                     watched_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.watched, <span class="kw-2">&amp;</span><span class="self">self</span>.meta_item, <span class="kw-2">&amp;</span><span class="self">self</span>.library_item);
@@ -2333,12 +2548,14 @@
                     <span class="kw">_ </span>=&gt; Effects::none().unchanged(),
                 };
 
+                <span class="kw">let </span>next_stream_effects =
+                    next_stream_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.next_stream, <span class="kw-2">&amp;</span><span class="self">self</span>.next_streams, <span class="kw-2">&amp;</span><span class="self">self</span>.selected);
+
                 <span class="kw">let </span>next_video_effects = next_video_update(
                     <span class="kw-2">&amp;mut </span><span class="self">self</span>.next_video,
                     <span class="kw-2">&amp;</span><span class="self">self</span>.next_stream,
                     <span class="kw-2">&amp;</span><span class="self">self</span>.selected,
                     <span class="kw-2">&amp;</span><span class="self">self</span>.meta_item,
-                    <span class="kw-2">&amp;</span>ctx.profile.settings,
                 );
 
                 <span class="kw">let </span>next_streams_effects = next_streams_effects.join(next_streams_update::&lt;E&gt;(
@@ -2346,13 +2563,6 @@
                     <span class="kw-2">&amp;</span><span class="self">self</span>.next_video,
                     <span class="kw-2">&amp;</span><span class="self">self</span>.selected,
                 ));
-
-                <span class="kw">let </span>next_stream_effects = next_stream_update(
-                    <span class="kw-2">&amp;mut </span><span class="self">self</span>.next_stream,
-                    <span class="kw-2">&amp;</span><span class="self">self</span>.next_streams,
-                    <span class="kw-2">&amp;</span><span class="self">self</span>.selected,
-                    <span class="kw-2">&amp;</span>ctx.profile.settings,
-                );
 
                 <span class="kw">let </span>series_info_effects =
                     series_info_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.series_info, <span class="kw-2">&amp;</span><span class="self">self</span>.selected, <span class="kw-2">&amp;</span><span class="self">self</span>.meta_item);
@@ -2363,8 +2573,11 @@
                     <span class="kw-2">&amp;</span>ctx.library,
                 );
 
-                <span class="kw">let </span>library_item_state_effects =
-                    library_item_state_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.library_item, <span class="kw-2">&amp;</span><span class="self">self</span>.selected);
+                <span class="kw">let </span>library_item_state_effects = library_item_state_update(
+                    <span class="kw-2">&amp;mut </span><span class="self">self</span>.library_item,
+                    <span class="self">self</span>.next_video.as_ref(),
+                    <span class="kw-2">&amp;</span><span class="self">self</span>.selected,
+                );
 
                 <span class="kw">let </span>watched_effects =
                     watched_update(<span class="kw-2">&amp;mut </span><span class="self">self</span>.watched, <span class="kw-2">&amp;</span><span class="self">self</span>.meta_item, <span class="kw-2">&amp;</span><span class="self">self</span>.library_item);
@@ -2467,22 +2680,17 @@
 <span class="kw">fn </span>item_state_update(
     library_item: <span class="kw-2">&amp;mut </span><span class="prelude-ty">Option</span>&lt;LibraryItem&gt;,
     next_video: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Video&gt;,
+    marked_video_as_watched: bool,
 ) -&gt; Effects {
     <span class="kw">match </span>library_item {
         <span class="prelude-val">Some</span>(library_item)
-            <span class="kw">if </span>library_item.state.time_offset <span class="kw">as </span>f64
-                &gt; library_item.state.duration <span class="kw">as </span>f64 * CREDITS_THRESHOLD_COEF =&gt;
+            <span class="kw">if </span>marked_video_as_watched
+                || library_item.state.time_offset <span class="kw">as </span>f64
+                    &gt; library_item.state.duration <span class="kw">as </span>f64 * CREDITS_THRESHOLD_COEF =&gt;
         {
             library_item.state.time_offset = <span class="number">0</span>;
             <span class="kw">if let </span><span class="prelude-val">Some</span>(next_video) = next_video {
-                library_item.state.video_id = <span class="prelude-val">Some</span>(next_video.id.to_owned());
-                library_item.state.overall_time_watched = library_item
-                    .state
-                    .overall_time_watched
-                    .saturating_add(library_item.state.time_watched);
-                library_item.state.time_watched = <span class="number">0</span>;
-                library_item.state.flagged_watched = <span class="number">0</span>;
-                library_item.state.time_offset = <span class="number">1</span>;
+                library_item.advance_to_video(<span class="kw-2">&amp;</span>next_video.id);
             };
         }
         <span class="kw">_ </span>=&gt; {}
@@ -2520,7 +2728,6 @@
     stream: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;Stream&gt;,
     selected: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;Selected&gt;,
     meta_item: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;ResourceLoadable&lt;MetaItem&gt;&gt;,
-    settings: <span class="kw-2">&amp;</span>ProfileSettings,
 ) -&gt; Effects {
     <span class="kw">let </span>next_video = <span class="kw">match </span>(selected, meta_item) {
         (
@@ -2536,36 +2743,13 @@
                 content: <span class="prelude-val">Some</span>(Loadable::Ready(meta_item)),
                 ..
             }),
-        ) <span class="kw">if </span>settings.binge_watching =&gt; meta_item
-            .videos
-            .iter()
-            .find_position(|video| video.id == <span class="kw-2">*</span>video_id)
-            .and_then(|(position, current_video)| {
-                meta_item
-                    .videos
-                    .get(position + <span class="number">1</span>)
-                    .map(|next_video| (current_video, next_video))
-            })
-            .filter(|(current_video, next_video)| {
-                <span class="kw">let </span>current_season = current_video
-                    .series_info
-                    .as_ref()
-                    .map(|info| info.season)
-                    .unwrap_or_default();
-                <span class="kw">let </span>next_season = next_video
-                    .series_info
-                    .as_ref()
-                    .map(|info| info.season)
-                    .unwrap_or_default();
-                next_season != <span class="number">0 </span>|| current_season == next_season
-            })
-            .map(|(<span class="kw">_</span>, next_video)| {
-                <span class="kw">let </span><span class="kw-2">mut </span>next_video = next_video.clone();
-                <span class="kw">if let </span><span class="prelude-val">Some</span>(stream) = stream {
-                    next_video.streams = <span class="macro">vec!</span>[stream.clone()];
-                }
-                next_video
-            }),
+        ) =&gt; meta_item.next_video(video_id).map(|next_video| {
+            <span class="kw">let </span><span class="kw-2">mut </span>next_video = next_video.clone();
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(stream) = stream {
+                next_video.streams = <span class="macro">vec!</span>[stream.clone()];
+            }
+            next_video
+        }),
         <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
     };
     eq_update(video, next_video)
@@ -2623,7 +2807,6 @@
     stream: <span class="kw-2">&amp;mut </span><span class="prelude-ty">Option</span>&lt;Stream&gt;,
     next_streams: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;ResourceLoadable&lt;Vec&lt;Stream&gt;&gt;&gt;,
     selected: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;Selected&gt;,
-    settings: <span class="kw-2">&amp;</span>ProfileSettings,
 ) -&gt; Effects {
     <span class="kw">let </span>next_stream = <span class="kw">match </span>(selected, next_streams) {
         (
@@ -2632,7 +2815,7 @@
                 content: <span class="prelude-val">Some</span>(Loadable::Ready(streams)),
                 ..
             }),
-        ) <span class="kw">if </span>settings.binge_watching =&gt; streams
+        ) =&gt; streams
             .iter()
             .find(|next_stream| next_stream.is_binge_match(stream))
             .cloned(),
@@ -2730,6 +2913,7 @@
 
 <span class="kw">fn </span>library_item_state_update(
     library_item: <span class="kw-2">&amp;mut </span><span class="prelude-ty">Option</span>&lt;LibraryItem&gt;,
+    next_video: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Video&gt;,
     selected: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;Selected&gt;,
 ) -&gt; Effects {
     <span class="kw">match </span>(library_item, selected) {
@@ -2738,7 +2922,7 @@
                 (<span class="prelude-val">Some</span>(stream_request), <span class="prelude-val">Some</span>(state_video_id))
                     <span class="kw">if </span>stream_request.path.id != <span class="kw-2">*</span>state_video_id =&gt;
                 {
-                    library_item.state.time_offset = <span class="number">0</span>;
+                    library_item.state.time_offset = <span class="kw">if </span>next_video.is_some() { <span class="number">1 </span>} <span class="kw">else </span>{ <span class="number">0 </span>};
                     Effects::msg(Msg::Internal(Internal::UpdateLibraryItem(
                         library_item.to_owned(),
                     )))
@@ -2750,37 +2934,96 @@
     }
 }
 
+<span class="kw">fn </span>stream_update(
+    stream: <span class="kw-2">&amp;mut </span><span class="prelude-ty">Option</span>&lt;Loadable&lt;(StreamUrls, Stream&lt;ConvertedStreamSource&gt;), EnvError&gt;&gt;,
+    selected: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Selected&gt;,
+    streaming_server_url: <span class="kw-2">&amp;</span>Url,
+) -&gt; Effects {
+    <span class="kw">match </span>selected {
+        <span class="prelude-val">Some</span>(selected) =&gt; {
+            <span class="kw">let </span>next_stream = <span class="kw">match </span>selected.stream.convert(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span>streaming_server_url)) {
+                <span class="prelude-val">Ok</span>(converted_stream) =&gt; {
+                    <span class="kw">let </span>stream_urls =
+                        StreamUrls::new(converted_stream.clone(), <span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span>streaming_server_url));
+
+                    Loadable::Ready((stream_urls, converted_stream))
+                }
+                <span class="prelude-val">Err</span>(err) =&gt; Loadable::Err(err),
+            };
+
+            eq_update(stream, <span class="prelude-val">Some</span>(next_stream))
+        }
+        <span class="prelude-val">None </span>=&gt; eq_update(stream, <span class="prelude-val">None</span>),
+    }
+}
+
 <span class="kw">fn </span>subtitles_update&lt;E: Env + <span class="lifetime">'static</span>&gt;(
     subtitles: <span class="kw-2">&amp;mut </span>Vec&lt;ResourceLoadable&lt;Vec&lt;Subtitles&gt;&gt;&gt;,
     selected: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;Selected&gt;,
     video_params: <span class="kw-2">&amp;</span><span class="prelude-ty">Option</span>&lt;VideoParams&gt;,
+    stream: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span>Loadable&lt;(StreamUrls, Stream&lt;ConvertedStreamSource&gt;), EnvError&gt;&gt;,
     addons: <span class="kw-2">&amp;</span>[Descriptor],
 ) -&gt; Effects {
-    <span class="kw">match </span>(selected, video_params) {
+    <span class="kw">match </span>(selected, stream) {
         (
             <span class="prelude-val">Some</span>(Selected {
                 subtitles_path: <span class="prelude-val">Some</span>(subtitles_path),
                 ..
             }),
-            <span class="prelude-val">Some</span>(video_params),
-        ) =&gt; resources_update_with_vector_content::&lt;E, <span class="kw">_</span>&gt;(
-            subtitles,
-            ResourcesAction::force_request(
-                <span class="kw-2">&amp;</span>AggrRequest::AllOfResource(ResourcePath {
-                    extra: subtitles_path
-                        .extra
-                        .to_owned()
-                        .extend_one(<span class="kw-2">&amp;</span>VIDEO_HASH_EXTRA_PROP, video_params.hash.to_owned())
-                        .extend_one(
-                            <span class="kw-2">&amp;</span>VIDEO_SIZE_EXTRA_PROP,
-                            video_params.size.as_ref().map(|size| size.to_string()),
-                        )
-                        .extend_one(<span class="kw-2">&amp;</span>VIDEO_FILENAME_EXTRA_PROP, video_params.filename.to_owned()),
-                    ..subtitles_path.to_owned()
-                }),
-                addons,
-            ),
-        ),
+            <span class="prelude-val">Some</span>(Loadable::Ready((_stream_urls, converted_stream))),
+        ) =&gt; {
+            <span class="kw">let </span>video_hash = converted_stream
+                .behavior_hints
+                .video_hash
+                .clone()
+                .or_else(|| {
+                    video_params
+                        .as_ref()
+                        .and_then(|video_params| video_params.hash.to_owned())
+                });
+            <span class="kw">let </span>video_size = converted_stream.behavior_hints.video_size.or_else(|| {
+                video_params
+                    .as_ref()
+                    .and_then(|video_params| video_params.size)
+            });
+            <span class="kw">let </span>video_filename =
+                converted_stream
+                    .behavior_hints
+                    .filename
+                    .to_owned()
+                    .or_else(|| {
+                        video_params
+                            .as_ref()
+                            .and_then(|video_params| video_params.filename.clone())
+                    });
+
+            <span class="kw">if </span>video_hash.is_none()
+                &amp;&amp; video_size.is_none()
+                &amp;&amp; video_filename.is_none()
+                &amp;&amp; video_params.is_none()
+            {
+                <span class="kw">return </span>Effects::none().unchanged();
+            }
+
+            resources_update_with_vector_content::&lt;E, <span class="kw">_</span>&gt;(
+                subtitles,
+                ResourcesAction::request(
+                    <span class="kw-2">&amp;</span>AggrRequest::AllOfResource(ResourcePath {
+                        extra: subtitles_path
+                            .extra
+                            .to_owned()
+                            .extend_one(<span class="kw-2">&amp;</span>VIDEO_HASH_EXTRA_PROP, video_hash)
+                            .extend_one(
+                                <span class="kw-2">&amp;</span>VIDEO_SIZE_EXTRA_PROP,
+                                video_size.map(|size| size.to_string()),
+                            )
+                            .extend_one(<span class="kw-2">&amp;</span>VIDEO_FILENAME_EXTRA_PROP, video_filename),
+                        ..subtitles_path.to_owned()
+                    }),
+                    addons,
+                ),
+            )
+        }
         <span class="kw">_ </span>=&gt; eq_update(subtitles, <span class="macro">vec!</span>[]),
     }
 }
@@ -2864,8 +3107,11 @@
     </span><span class="kw">let </span>duration_diff_in_secs =
         (library_item.state.duration.abs_diff(closest_duration)).div(<span class="number">1000 </span>* <span class="number">10</span>) / <span class="number">10</span>;
     <span class="macro">tracing::debug!</span>(
+        closest_duration,
+        closest_outro,
         <span class="string">"Player: Outro match by duration with difference of {duration_diff_in_secs} seconds"
     </span>);
+
     library_item
         .state
         .duration
@@ -2891,7 +3137,9 @@
     );
 
     <span class="kw">let </span>intro_outro_effects = <span class="kw">match </span>(skip_gaps, library_item) {
-        (<span class="prelude-val">Some</span>((<span class="kw">_</span>, Loadable::Ready(response))), <span class="prelude-val">Some</span>(library_item)) =&gt; {
+        (<span class="prelude-val">Some</span>((<span class="kw">_</span>, Loadable::Ready(response))), <span class="prelude-val">Some</span>(library_item))
+            <span class="kw">if </span>library_item.state.duration &gt; <span class="number">0 </span>=&gt;
+        {
             <span class="kw">let </span>outro_time = {
                 <span class="kw">let </span>outro_durations = response.gaps.iter().filter_map(|(duration, skip_gaps)| {
                     skip_gaps.outro.map(|outro| (duration, outro))
@@ -2933,18 +3181,20 @@
 
                 closest_duration.and_then(|(closest_duration, skip_gaps)| {
                 <span class="kw">let </span>duration_diff_in_secs = (library_item.state.duration.abs_diff(<span class="kw-2">*</span>closest_duration)).div(<span class="number">1000 </span>* <span class="number">10</span>) / <span class="number">10</span>;
-                <span class="macro">tracing::trace!</span>(<span class="string">"Player: Intro match by duration with difference of {duration_diff_in_secs} seconds"</span>);
-
                 <span class="kw">let </span>duration_ration = Ratio::new(library_item.state.duration, <span class="kw-2">*</span>closest_duration);
-
                 <span class="comment">// even though we checked for len() &gt; 0 make sure we don't panic if somebody decides to remove that check!
-                </span>skip_gaps.seek_history.first().map(|seek_event| {
-                    IntroData {
+                </span><span class="kw">let </span>matched_intro = skip_gaps.seek_history.first().map(|seek_event| {
+                    <span class="kw">let </span>intro_data = IntroData {
                         from: (duration_ration * seek_event.from).to_integer(),
                         to: (duration_ration * seek_event.to).to_integer(),
                         duration: <span class="kw">if </span>duration_diff_in_secs &gt; <span class="number">0 </span>{ <span class="prelude-val">Some</span>(seek_event.to.abs_diff(seek_event.from)) } <span class="kw">else </span>{ <span class="prelude-val">None </span>}
-                    }
-                })
+                    };
+                    <span class="macro">tracing::debug!</span>(<span class="question-mark">?</span>seek_event, <span class="question-mark">?</span>intro_data, <span class="string">"Player: Intro match for event by duration with difference of {duration_diff_in_secs} seconds"</span>,);
+                    intro_data
+                })<span class="question-mark">?</span>;
+
+
+                <span class="prelude-val">Some</span>(matched_intro)
               })
             };
 
@@ -2956,7 +3206,7 @@
                 }),
             )
         }
-        <span class="kw">_ </span>=&gt; Effects::none().unchanged(),
+        <span class="kw">_ </span>=&gt; eq_update(intro_outro, <span class="prelude-val">None</span>),
     };
 
     skip_gaps_effects.join(intro_outro_effects)
@@ -3062,6 +3312,30 @@
     )
     .into()
 }
+
+<span class="doccomment">/// Sends watched state for meta item on every Watched state change of the library item
+</span><span class="kw">fn </span>send_watched&lt;E: Env + <span class="lifetime">'static</span>&gt;(auth_key: AuthKey, meta_path: <span class="kw-2">&amp;</span>ResourcePath) -&gt; Effect {
+    <span class="kw">let </span>meta_id = meta_path.id.to_owned();
+
+    <span class="kw">let </span>request = RatingSendRequest {
+        auth_key,
+        meta_item_id: meta_id.to_owned(),
+        meta_item_type: meta_path.r#type.to_owned(),
+        rating: <span class="prelude-val">Some</span>(Rating::Watched),
+    };
+
+    EffectFuture::Concurrent(
+        E::fetch::&lt;<span class="kw">_</span>, RatingSendResponse&gt;(request.into())
+            .map(<span class="macro">enclose::enclose!</span>((meta_id) <span class="kw">move </span>|result| {
+                Msg::Internal(Internal::WatchedSendResult(
+                    meta_id, result,
+                ))
+            }))
+            .boxed_env(),
+    )
+    .into()
+}
+
 <span class="attr">#[cfg(test)]
 </span><span class="kw">mod </span>tests {
     <span class="kw">use </span>chrono::Utc;
